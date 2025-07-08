@@ -18,3 +18,36 @@ Linux (Ubuntu, CentOS, or any Unix-based system)
 Bash Shell
 mailx (for email functionality)
 sudo access
+
+
+
+Configuring mail 
+sudo apt install postfix
+sudo apt install msmtp
+sudo apt install msmtp-mta
+
+create a file name .msmtprc in a new Directory
+
+Add this to .msmtprc file
+
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.msmtp.log
+
+account gmail
+host        smtp.gmail.com
+port        587
+from        username@gmail.com
+user        username@gmail.com
+password    your-password
+
+account default gmail
+
+
+
+
+Run the script using:
+
+./system_health.sh
