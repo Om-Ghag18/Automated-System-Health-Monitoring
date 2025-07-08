@@ -1,0 +1,28 @@
+#!/bin/bash
+
+LOG_FILE="/var/log/sys_health.log"
+EMAIL="Your.mail"
+
+check_disk_usage() {
+    echo "Checking disk usage..."
+    df -h
+}
+
+monitor_services() {
+    echo "Monitoring running services..."
+    systemctl list-units --type=service --state=running
+}
+
+check_memory_usage() {
+    echo "Checking memory usage..."
+    free -m
+}
+
+check_cpu_usage() {
+    echo "Checking CPU usage..."
+    top -bn1 | grep "Cpu"
+}
+
+send_report() {
+    REPORT="/tmp/sys_health_report.txt"
+    echo "Generating system health report..."
